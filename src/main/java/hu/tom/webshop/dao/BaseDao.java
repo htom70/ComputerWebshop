@@ -3,18 +3,22 @@ package hu.tom.webshop.dao;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class BaseDao<T> {
 
     private final Class<T> entityClass;
-    private Session currentSession;
-    private Transaction currentTransaction;
+    protected Session currentSession;
+    protected Transaction currentTransaction;
 
     public BaseDao(Class<T> entityClass) {
         this.entityClass = entityClass;
         currentSession = HibernateUtil.getSessionFactory().openSession();
     }
 
-    private void openTransaction() {
+    protected void openTransaction() {
         currentTransaction = currentSession.getTransaction();
     }
 
