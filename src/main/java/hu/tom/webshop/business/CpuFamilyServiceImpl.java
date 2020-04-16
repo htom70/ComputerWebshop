@@ -2,13 +2,16 @@ package hu.tom.webshop.business;
 
 import hu.tom.webshop.dao.CpuFamilyDao;
 import hu.tom.webshop.domain.CpuFamily;
+import hu.tom.webshop.domain.CpuSocket;
+
+import java.util.List;
 
 public class CpuFamilyServiceImpl implements BaseService<CpuFamily> {
 
-    private final CpuFamilyDao cpuFamilyDao;
+    private CpuFamilyDao cpuFamilyDao;
 
     public CpuFamilyServiceImpl() {
-        cpuFamilyDao = new CpuFamilyDao();
+        cpuFamilyDao = new  CpuFamilyDao();
     }
 
     @Override
@@ -29,5 +32,9 @@ public class CpuFamilyServiceImpl implements BaseService<CpuFamily> {
     @Override
     public void delete(CpuFamily cpuFamily) {
         cpuFamilyDao.delete(cpuFamily);
+    }
+
+    public List<CpuFamily> findAllCpuFamilysBelongToSpecificSocket(CpuSocket cpuSocket) {
+        return cpuFamilyDao.findAllCpuFamilysBelongToSpecificSocket(cpuSocket);
     }
 }

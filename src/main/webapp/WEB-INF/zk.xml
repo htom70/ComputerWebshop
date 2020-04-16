@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://www.zkoss.org/2005/zk/config http://www.zkoss.org/2005/zk/config/zk.xsd">
 
     <listener>
-        <listener-class>hu.userrendszerhaz.listener.ZKContextListener</listener-class>
+        <listener-class>hu.tom.webshop.listener.ZKContextListener</listener-class>
     </listener>
     <listener>
         <listener-class>org.zkoss.zkmax.au.websocket.WebSocketWebAppInit</listener-class>

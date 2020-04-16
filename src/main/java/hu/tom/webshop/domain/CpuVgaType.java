@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class CpuFamily {
+public class CpuVgaType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,19 +14,16 @@ public class CpuFamily {
     private String name;
 
     @ManyToOne
-    private CpuSocket cpuSocket;
+    private CpuFamily cpuFamily;
 
-    @OneToMany(mappedBy = "cpuFamily")
+    @OneToMany(mappedBy = "cpuVgaType")
     private Set<Processor> processors = new HashSet<>();
 
-    @OneToMany(mappedBy = "cpuFamily")
-    private Set<CpuVgaType> cpuVgaTypes=new HashSet<>();
-
-    public CpuFamily(String name) {
-        this.name = name;
+    public CpuVgaType() {
     }
 
-    public CpuFamily() {
+    public CpuVgaType(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -37,11 +34,11 @@ public class CpuFamily {
         this.name = name;
     }
 
-    public CpuSocket getCpuSocket() {
-        return cpuSocket;
+    public CpuFamily getCpuFamily() {
+        return cpuFamily;
     }
 
-    public void setCpuSocket(CpuSocket cpuSocket) {
-        this.cpuSocket = cpuSocket;
+    public void setCpuFamily(CpuFamily cpuFamily) {
+        this.cpuFamily = cpuFamily;
     }
 }

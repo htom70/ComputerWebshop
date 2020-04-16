@@ -3,6 +3,8 @@ package hu.tom.webshop.business;
 import hu.tom.webshop.dao.CpuVendorDao;
 import hu.tom.webshop.domain.CpuVendor;
 
+import java.util.List;
+
 public class CpuVendorServiceImpl implements BaseService<CpuVendor> {
 
     private final CpuVendorDao cpuVendorDao;
@@ -29,5 +31,13 @@ public class CpuVendorServiceImpl implements BaseService<CpuVendor> {
     @Override
     public void delete(CpuVendor cpuVendor) {
         cpuVendorDao.delete(cpuVendor);
+    }
+
+    public List<CpuVendor> findAllCpuVendors() {
+        return cpuVendorDao.findAllCpuVendors();
+    }
+
+    public CpuVendor findCpuVendorByName(String name) {
+        return cpuVendorDao.findCpuVendorByName(name);
     }
 }

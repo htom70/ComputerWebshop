@@ -1,0 +1,42 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<panel onMouseOut="@command('submenuLeave')">
+<panelchildren>
+    <vlayout sclass="submenu" hflex="min" >
+        <hlayout width="800px">
+            <label value="Adathordozó" hflex="1" />
+            <label value="Digitalizáló,tuner" hflex="1"/>
+            <label value="Hálózati háttértároló" hflex="1"/>
+            <label value="Pendrive" hflex="1"/>
+            <label value="Szünetmentes tápegység" hflex="1"/>
+        </hlayout>
+        <hlayout width="800px" >
+            <label value="Alaplap" hflex="1"/>
+            <label value="Egér" hflex="1"/>
+            <label value="Hütő ventilátor" hflex="1"/>
+            <label value="Processzor" hflex="1"/>
+            <label value="Tablet" hflex="1"/>
+        </hlayout>
+        <hlayout width="800px">
+            <label value="Audio" hflex="1"/>
+            <label value="Egérpad" hflex="1"/>
+            <label value="Memória" hflex="1"/>
+            <label value="SSD" hflex="1"/>
+            <label value="Tápegység" hflex="1"/>
+        </hlayout>
+        <hlayout width="800px">
+            <label value="Billentyűzet" hflex="1"/>
+            <label value="E-könyv olvasó" hflex="1"/>
+            <label value="Merevlemez" hflex="1"/>
+            <label value="Számítógép" hflex="1"/>
+            <label value="Videokártya" hflex="1"/>
+        </hlayout>
+        <hlayout width="800px">
+            <label value="Biztonságtechnika" hflex="1"/>
+            <label value="Hangfal" hflex="1"/>
+            <label value="Monitor" hflex="1"/>
+            <label value="Számítógépház" hflex="1"/>
+            <label value="Webkamera" hflex="1"/>
+        </hlayout>
+    </vlayout>
+</panelchildren>
+</panel>

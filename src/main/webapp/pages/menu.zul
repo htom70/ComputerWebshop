@@ -1,0 +1,39 @@
+<window viewModel="@id('vm') @init('hu.tom.webshop.viewmodel.MenuViewmodel')"
+        border="normal" hflex="1" vflex="1" contentStyle="overflow:auto">
+    <menubar width="100%">
+        <menu label="Számítástechnika">
+            <menupopup>
+                <menuitem label="Processzor" onClick="@command('showProcessors')"/>
+                <menuitem label="Alaplap" onClick=""/>
+                <menuitem label="Videokártya" onClick=""/>
+            </menupopup>
+        </menu>
+        <menu label="Gamer">
+            <menupopup>
+                <menuitem label="Gamepad"/>
+                <menuitem label="Joystick"/>
+                <menuitem label="Headset"/>
+            </menupopup>
+        </menu>
+        <menu label="Irodatechnika"/>
+        <menu label="Kártyatechnokógia"/>
+        <menu label="Szórakoztatás"/>
+        <menu label="Kiegészítő/kábel"/>
+        <menu label="Kommunikáció"/>
+        <menu label="Háztartás"/>
+    </menubar>
+    <borderlayout width="100%" height="500px">
+        <east width="20%">
+            <include src="@load(vm.inputParamPage)"/>
+
+        </east>
+        <west width="20%">
+<!--            <label value="WEST"/>-->
+            <include src="@load(vm.queryPage)"/>
+        </west>
+        <center>
+            <label value="CENTER"/>
+<!--            <include src="@load(vm.showItemPage)"/>-->
+        </center>
+    </borderlayout>
+</window>

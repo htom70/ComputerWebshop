@@ -1,10 +1,12 @@
 package hu.tom.webshop.dao;
 
+import hu.tom.webshop.domain.CpuVendor;
 import hu.tom.webshop.domain.Processor;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,5 +40,19 @@ public class ProcessorDao extends BaseDao<Processor> {
         criteriaCount.setProjection(Projections.rowCount());
         return (Long) criteriaCount.uniqueResult();
     }
+
+//    public List<Processor> findProcessorsForUI() {
+//        CriteriaBuilder criteriaBuilder = currentSession.getCriteriaBuilder();
+//        CriteriaQuery<Processor> criteriaQuery = criteriaBuilder.createQuery(Processor.class);
+//        Root<Processor> processorRoot = criteriaQuery.from(Processor.class);
+//        Subquery<CpuVendor> cpuVendorSubquery = criteriaQuery.subquery(CpuVendor.class);
+//        Root<CpuVendor> cpuVendorRoot = cpuVendorSubquery.from(CpuVendor.class);
+//        criteriaQuery.select(root);
+//        List<Predicate> criteria = new ArrayList<>();
+//        ParameterExpression<Processor> parameterExpression = criteriaBuilder.parameter(Processor.class);
+//        criteriaBuilder.in()
+//        Query query = currentSession.createQuery(criteriaQuery);
+//        return query.getResultList();
+//    }
 
 }

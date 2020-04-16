@@ -8,8 +8,8 @@
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/computer_webshop?serverTimezone=UTC</property>
-        <property name="connection.username">tom</property>
-        <property name="connection.password">TOmi_1970</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">HK_zr4lmw96</property>
 
         <!-- Use the C3P0 connection pool. -->
         <property name="c3p0.min_size">3</property>
@@ -34,6 +34,10 @@
         <property name="hibernate.current_session_context_class">thread</property>
         
         <mapping class="hu.tom.webshop.domain.Processor"/>
+        <mapping class="hu.tom.webshop.domain.CpuVendor"/>
+        <mapping class="hu.tom.webshop.domain.CpuSocket"/>
+        <mapping class="hu.tom.webshop.domain.CpuFamily"/>
+        <mapping class="hu.tom.webshop.domain.CpuVgaType"/>
 
     </session-factory>
 

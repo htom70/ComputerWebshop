@@ -1,0 +1,31 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<window hflex="1" height="1000px"  viewModel="@id('vm') @init('hu.tom.webshop.viewmodel.MenuViewmodel')">
+
+    <vlayout hflex="1" height="100px">
+        <hlayout vflex="1" sclass="first-menu-line">
+            <vbox hflex="2">
+                <label value="logo"/>
+            </vbox>
+            <vbox hflex="6">
+                <label value="menu"/>
+            </vbox>
+            <vbox hflex="2">
+                <label value="cart"/>
+            </vbox>
+        </hlayout>
+        <hlayout vflex="1" valign="middle" sclass="second-menu-line">
+            <label hflex="1"/>
+            <label hflex="2" value="Számítástechnika" onMouseOver="@command('alert')" sclass="@load(vm.selected? 'redLabel':'')"/>
+            <label hflex="2" value="Gamer"/>
+            <label hflex="2" value="Irodatechnika"/>
+            <label hflex="2" value="Kártyatechnológia"/>
+            <label hflex="2" value="Szórakoztatás"/>
+            <label hflex="2" value="Kiegészítő/kábel"/>
+            <label hflex="2" value="Kommunikáció"/>
+            <label hflex="2" value="Háztartás"/>
+            <label hflex="1"/>
+        </hlayout>
+    </vlayout>
+    <include id="submenuinclude" src="@load(vm.dialogPage)"/>
+
+</window>

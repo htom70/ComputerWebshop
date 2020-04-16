@@ -1,9 +1,5 @@
 package hu.tom.webshop.business;
 
-import hu.tom.webshop.domain.CpuArchitectType;
-
-import java.util.List;
-
 public interface BaseService<T> {
 
     public void create(T t);

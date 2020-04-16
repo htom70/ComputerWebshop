@@ -2,6 +2,9 @@ package hu.tom.webshop.business;
 
 import hu.tom.webshop.dao.CpuSocketDao;
 import hu.tom.webshop.domain.CpuSocket;
+import hu.tom.webshop.domain.CpuVendor;
+
+import java.util.List;
 
 public class CpuSocketServiceImpl implements BaseService<CpuSocket> {
 
@@ -29,5 +32,13 @@ public class CpuSocketServiceImpl implements BaseService<CpuSocket> {
     @Override
     public void delete(CpuSocket cpuSocket) {
         cpuSocketDao.delete(cpuSocket);
+    }
+
+    public List<CpuSocket> findAllCpuSockets() {
+        return cpuSocketDao.findAllCpuSockets();
+    }
+
+    public List<CpuSocket> findAllCpuSocketsBelongToSpecificVendor(CpuVendor vendor) {
+        return cpuSocketDao.findAllCpuSocketsBelongToSpecificVendor(vendor);
     }
 }

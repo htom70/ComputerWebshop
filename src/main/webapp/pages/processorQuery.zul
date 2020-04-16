@@ -1,0 +1,8 @@
+<vbox>
+    <label value="Alapadatok"/>
+    <vlayout>
+        <label value="Gyártó"/>
+        <checkbox label="AMD" onClick=""/>
+        <checkbox label="Intel" onClick=""/>
+    </vlayout>
+</vbox>
