@@ -26,7 +26,7 @@
                 <row>
                     <cell sclass="row-title">${c:l('cpuVendorformLabelName')}</cell>
                     <cell>
-                        <radiogroup model="@load(vm.cpuVendors)" selectedItem="@save(vm.actualCpuVendor)" onCheck="@command('loadCpuSocketsUponVendor')">
+                        <radiogroup hflex="1" model="@load(vm.cpuVendors)" selectedItem="@save(vm.actualCpuVendor)" onCheck="@command('loadCpuSocketsUponVendor')">
                             <template name="model">
                                 <radio label="@load(each.name)"/>
                             </template>
@@ -45,9 +45,10 @@
                 <row>
                     <cell sclass="row-title">${c:l('cpuSocketformLabelName')}</cell>
                     <cell>
-                        <combobox disabled="@load(empty vm.cpuSockets)" model="@load(vm.cpuSockets)" mold="rounded" width="200px"
-                                  selectedItem="@bind(vm.actualCpuSocket)" readonly="true" onSelect="@command('loadCpuFamiliesUponSocket')">
-                            <template name="model">
+                        <combobox disabled="@load(empty vm.cpuSockets)"  model="@load(vm.cpuSockets)" mold="rounded" width="200px"
+                                  selectedItem="@bind(vm.actualCpuSocket)" readonly="true" onSelect="@command('loadCpuFamiliesUponSocket')"
+                        onAfterRender="@command('noti')">
+                            <template name="model" >
                                 <comboitem label="@load(each.cpuSocketType)"/>
                             </template>
                         </combobox>

@@ -2,10 +2,13 @@ package hu.tom.webshop.viewmodel;
 
 import hu.tom.webshop.business.*;
 import hu.tom.webshop.domain.*;
-import org.zkoss.bind.annotation.BindingParam;
+import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zk.ui.util.Notification;
+import org.zkoss.zul.ListModel;
+import org.zkoss.zul.ListModelList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +26,13 @@ public class InputCpuParametersFormViewModel {
     private String cpuSocketName = "";
     private String cpuFamilyName = "";
     private String cpuVgaTypeName = "";
-    private int numberOfCores=2;
+    private int numberOfCores = 2;
     private CpuVendor actualCpuVendor;
     private CpuSocket actualCpuSocket;
     private CpuFamily actualCpuFamily;
     private CpuVgaType actualCpuVgaType;
     private List<CpuVendor> cpuVendors = new ArrayList<>();
-    private List<CpuSocket> cpuSockets = new ArrayList<>();
+    private ListModel<CpuSocket> cpuSockets = new ListModelList<>();
     private List<CpuFamily> cpuFamilies = new ArrayList<>();
     private List<CpuVgaType> cpuVgaTypes = new ArrayList<>();
     private boolean newVendorTextboxEnabled;
@@ -101,11 +104,11 @@ public class InputCpuParametersFormViewModel {
         this.actualCpuSocket = actualCpuSocket;
     }
 
-    public List<CpuSocket> getCpuSockets() {
+    public ListModel<CpuSocket> getCpuSockets() {
         return cpuSockets;
     }
 
-    public void setCpuSockets(List<CpuSocket> cpuSockets) {
+    public void setCpuSockets(ListModel<CpuSocket> cpuSockets) {
         this.cpuSockets = cpuSockets;
     }
 
@@ -261,9 +264,18 @@ public class InputCpuParametersFormViewModel {
     }
 
     @Command
-    @NotifyChange("cpuSockets")
     public void loadCpuSocketsUponVendor() {
-        cpuSockets = cpuSocketService.findAllCpuSocketsBelongToSpecificVendor(actualCpuVendor);
+        clearActualCpuSocketAndCpuSockets();
+        clearActualCpuFamilyAndCpuFamilies();
+        clearActualCpuVgaTypeAndCpuVgaTypes();
+        cpuSockets = new ListModelList<>(cpuSocketService.findAllCpuSocketsBelongToSpecificVendor(actualCpuVendor));
+    }
+
+    @NotifyChange({"cpuSockets"})
+    public void clearCpuSockets() {
+        actualCpuSocket = null;
+        cpuSockets=null;
+        BindUtils.postNotifyChange(null,null, this,"actualCpuSocket");
     }
 
     @Command
@@ -271,6 +283,7 @@ public class InputCpuParametersFormViewModel {
     public void activateNewCpuFamilyTextBox() {
         newFamilyTextboxEnabled = true;
     }
+
 
     @Command
     @NotifyChange({"newFamilyTextboxEnabled", "cpuFamilyName"})
@@ -293,6 +306,8 @@ public class InputCpuParametersFormViewModel {
     @Command
     @NotifyChange("cpuFamilies")
     public void loadCpuFamiliesUponSocket() {
+        clearActualCpuFamilyAndCpuFamilies();
+        clearActualCpuVgaTypeAndCpuVgaTypes();
         cpuFamilies = cpuFamilyService.findAllCpuFamilysBelongToSpecificSocket(actualCpuSocket);
     }
 
@@ -323,6 +338,7 @@ public class InputCpuParametersFormViewModel {
     @Command
     @NotifyChange("cpuVgaTypes")
     public void loadCpuVgaTypesUponFamily() {
+        clearActualCpuVgaTypeAndCpuVgaTypes();
         cpuVgaTypes = cpuVgaTypesService.findAllCpuVgaTypesBelongToSpecificFamily(actualCpuFamily);
     }
 
@@ -338,6 +354,33 @@ public class InputCpuParametersFormViewModel {
     }
 
     public void loadCpuSockets() {
-        cpuSockets = cpuSocketService.findAllCpuSockets();
+        cpuSockets = new ListModelList<>(cpuSocketService.findAllCpuSockets());
+    }
+
+    private void clearActualCpuSocketAndCpuSockets() {
+        actualCpuSocket=null;
+        cpuSockets=null;
+        BindUtils.postNotifyChange(null,null,this,"actualCpuSocket");
+        BindUtils.postNotifyChange(null,null,this,"cpuSockets");
+    }
+
+    private void clearActualCpuFamilyAndCpuFamilies() {
+        actualCpuFamily=null;
+        cpuFamilies=null;
+        BindUtils.postNotifyChange(null,null,this,"actualCpuFamily");
+        BindUtils.postNotifyChange(null,null,this,"cpuFamilies");
+    }
+
+    private void clearActualCpuVgaTypeAndCpuVgaTypes() {
+        actualCpuVgaType=null;
+        cpuVgaTypes=null;
+        BindUtils.postNotifyChange(null,null,this,"actualCpuVgaType");
+        BindUtils.postNotifyChange(null,null,this,"cpuVgaTypes");
+    }
+
+
+    @Command
+    public void noti() {
+        Notification.show("Model changed");
     }
 }
