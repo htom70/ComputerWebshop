@@ -138,14 +138,26 @@
                                  value="@bind(vm.numberOfCores)"/>
                     </cell>
                 </row>
+                <row>
+                    <cell sclass="row-title">${labels.cpuPriceformLabelName}</cell>
+                    <cell>
+                        <textbox placeholder="Kisker Ár" hflex="1"
+                                 value="@save(vm.cpuPrice, before='saveProcessor')"
+                                 constraint="no empty: Mandatory field"/>
+                    </cell>
+                    <cell/>
+                </row>
+                <row>
+                    <cell sclass="row-title">${labels.cpuManufacturerCodeformLabelName}</cell>
+                    <cell>
+                        <textbox placeholder="Gyártói cikkszám" hflex="1"
+                                 value="@save(vm.cpuManufacturerCode, before='saveProcessor')"
+                                 constraint="no empty: Mandatory field"/>
+                    </cell>
+                    <cell/>
+                </row>
             </rows>
         </grid>
-        <radiogroup model="@load(vm.cpuVendors)" selectedItem="@save(vm.actualCpuVendor)"
-                    onCheck="@command('loadCpuSocketsUponVendor')">
-            <template name="model">
-                <radio label="@load(each.name)"/>
-            </template>
-        </radiogroup>
         <button label="save" iconSclass="z-icon-save" onClick="@command('saveProcessor')"/>
         <button label="cancel" iconSclass="z-icon-cancel" onClick="@command('cancel')"/>
     </vbox>

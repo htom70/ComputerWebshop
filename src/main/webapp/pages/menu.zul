@@ -36,4 +36,5 @@
             <include src="@load(vm.productsPage)"/>
         </center>
     </borderlayout>
+    <include src="@load(vm.dialogPage)"/>
 </window>

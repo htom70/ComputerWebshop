@@ -1,0 +1,49 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<vlayout>
+    <hlayout width="100%">
+        <label value="Processzor" style="font-size:20px"/>
+        <label value="@load(c:cat(vm.selectedProcessorsNumber,' találat'))" style="color:red"/>
+    </hlayout>
+
+
+    <grid width="100%" model="@load(vm.selectedProcessors)"
+          emptyMessage="No Procesor found in the result">
+        <columns>
+            <column width="100%"></column>
+        </columns>
+        <template name="model">
+            <row>
+                <hlayout height="100%">
+                    <image hflex="1" height="100%"
+                           src="/images/AMD_Ryzen_7_3700x_36_GHz_Socket_AM4_CPU_Box-i1801724.jpg"/>
+                    <vlayout hflex="4" height="100%">
+                        <hbox align="center" vflex="1" width="100%" widths="70%,30%">
+
+                            <label hflex="1" value="@init(each.type)"/>
+                            <div style="text-align:right">
+                                <label hflex="1" style="font-weight: bold;"
+                                       value="@load(c:cat(c:formatNumber(each.price, '###,###,###'), ' HUF'))"/>
+                            </div>
+                            <!--                        <label hflex="1" value="@init(each.price)"/>-->
+                        </hbox>
+                        <hbox align="center" pack="center" vflex="1" width="100%" widths="40%,20%,20%,20%">
+                            <label value="@load(c:cat('Cikkszám: ',each.manufacturerCode))"/>
+
+                            <spinner step="1" constraint="no empty,min 1 max 32: between 1 to 32"
+                                     value="@bind(vm.numberOfToCartAddedProducts)"/>
+                            <div style="text-align:right">
+                                <label value="DARAB"/>
+                            </div>
+                            <div style="text-align:right">
+                                <button hflex="min" iconSclass="z-icon-shopping-cart, z-icon-plus" tooltiptext="Add"
+                                        style="background-color:red;corol:white;"
+                                        onClick="@command('addProductToCart')"/>
+                            </div>
+                        </hbox>
+                    </vlayout>
+                </hlayout>
+
+            </row>
+        </template>
+    </grid>
+</vlayout>

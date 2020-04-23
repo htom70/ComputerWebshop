@@ -27,6 +27,8 @@ public class InputCpuParametersFormViewModel {
     private String cpuFamilyName = "";
     private String cpuVgaTypeName = "";
     private int numberOfCores = 2;
+    private int cpuPrice;
+    private String cpuManufacturerCode;
     private CpuVendor actualCpuVendor;
     private CpuSocket actualCpuSocket;
     private CpuFamily actualCpuFamily;
@@ -39,6 +41,22 @@ public class InputCpuParametersFormViewModel {
     private boolean newSocketTextboxEnabled;
     private boolean newFamilyTextboxEnabled;
     private boolean newVgaTypeTextboxEnabled;
+
+    public String getCpuManufacturerCode() {
+        return cpuManufacturerCode;
+    }
+
+    public void setCpuManufacturerCode(String cpuManufacturerCode) {
+        this.cpuManufacturerCode = cpuManufacturerCode;
+    }
+
+    public int getCpuPrice() {
+        return cpuPrice;
+    }
+
+    public void setCpuPrice(int cpuPrice) {
+        this.cpuPrice = cpuPrice;
+    }
 
     public int getNumberOfCores() {
         return numberOfCores;
@@ -274,8 +292,8 @@ public class InputCpuParametersFormViewModel {
     @NotifyChange({"cpuSockets"})
     public void clearCpuSockets() {
         actualCpuSocket = null;
-        cpuSockets=null;
-        BindUtils.postNotifyChange(null,null, this,"actualCpuSocket");
+        cpuSockets = null;
+        BindUtils.postNotifyChange(null, null, this, "actualCpuSocket");
     }
 
     @Command
@@ -345,7 +363,7 @@ public class InputCpuParametersFormViewModel {
     @Command
     @NotifyChange
     public void saveProcessor() {
-        Processor processor = new Processor(cpuType, numberOfCores, actualCpuVendor, actualCpuSocket, actualCpuFamily, actualCpuVgaType);
+        Processor processor = new Processor(cpuType, numberOfCores, cpuPrice, cpuManufacturerCode, actualCpuVendor, actualCpuSocket, actualCpuFamily, actualCpuVgaType);
         processorService.create(processor);
     }
 
@@ -358,31 +376,30 @@ public class InputCpuParametersFormViewModel {
     }
 
     private void clearActualCpuSocketAndCpuSockets() {
-        actualCpuSocket=null;
-        cpuSockets=null;
-        BindUtils.postNotifyChange(null,null,this,"actualCpuSocket");
-        BindUtils.postNotifyChange(null,null,this,"cpuSockets");
+        actualCpuSocket = null;
+        cpuSockets = null;
+        BindUtils.postNotifyChange(null, null, this, "actualCpuSocket");
+        BindUtils.postNotifyChange(null, null, this, "cpuSockets");
     }
 
     private void clearActualCpuFamilyAndCpuFamilies() {
-        actualCpuFamily=null;
-        cpuFamilies=null;
-        BindUtils.postNotifyChange(null,null,this,"actualCpuFamily");
-        BindUtils.postNotifyChange(null,null,this,"cpuFamilies");
+        actualCpuFamily = null;
+        cpuFamilies = null;
+        BindUtils.postNotifyChange(null, null, this, "actualCpuFamily");
+        BindUtils.postNotifyChange(null, null, this, "cpuFamilies");
     }
 
     private void clearActualCpuVgaTypeAndCpuVgaTypes() {
-        actualCpuVgaType=null;
-        cpuVgaTypes=null;
-        BindUtils.postNotifyChange(null,null,this,"actualCpuVgaType");
-        BindUtils.postNotifyChange(null,null,this,"cpuVgaTypes");
+        actualCpuVgaType = null;
+        cpuVgaTypes = null;
+        BindUtils.postNotifyChange(null, null, this, "actualCpuVgaType");
+        BindUtils.postNotifyChange(null, null, this, "cpuVgaTypes");
     }
 
     @Command
     public void cancel() {
         BindUtils.postGlobalCommand(null, null, "refresh", null);
     }
-
 
 
     @Command
