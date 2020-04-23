@@ -1,0 +1,13 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<window viewModel="@id('vmproc') @init('hu.tom.webshop.viewmodel.ShowProcessorViewModel)">
+    <borderlayout width="100%" vflex="min">
+        <west hflex="1">
+            <label value="WEST"/>
+<!--            <include src="/pages/processor/processor_query_west_layout.zul"/>-->
+        </west>
+        <center hflex="4">
+            <label value="CENTER"/>
+<!--            <include src="/pages/processor/processor_show_Items_center.zul"/>-->
+        </center>
+    </borderlayout>
+</window>

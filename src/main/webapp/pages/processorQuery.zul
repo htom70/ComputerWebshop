@@ -1,8 +1,9 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
 <vbox>
     <label value="Alapadatok"/>
     <vlayout>
         <label value="Gyártó"/>
-        <checkbox label="AMD" onClick=""/>
+        <checkbox label="AMD" sclass="this" onClick=""/>
         <checkbox label="Intel" onClick=""/>
     </vlayout>
 </vbox>

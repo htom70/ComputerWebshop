@@ -37,4 +37,8 @@ public class CpuVgaTypesServiceImpl implements BaseService<CpuVgaType> {
     public List<CpuVgaType> findAllCpuVgaTypesBelongToSpecificFamily(CpuFamily cpuFamily) {
         return cpuVgaTypeDao.findAllCpuVgaTypessBelongToSpecificFamily(cpuFamily);
     }
+
+    public List<CpuVgaType> findAllCpuVgaTypes() {
+        return cpuVgaTypeDao.findAllCpuVgaTypes();
+    }
 }

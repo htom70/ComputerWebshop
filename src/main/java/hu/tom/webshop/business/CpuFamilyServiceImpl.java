@@ -37,4 +37,8 @@ public class CpuFamilyServiceImpl implements BaseService<CpuFamily> {
     public List<CpuFamily> findAllCpuFamilysBelongToSpecificSocket(CpuSocket cpuSocket) {
         return cpuFamilyDao.findAllCpuFamilysBelongToSpecificSocket(cpuSocket);
     }
+
+    public List<CpuFamily> findAllCpuFamilies() {
+        return cpuFamilyDao.findAllCpuFamilies();
+    }
 }

@@ -1,0 +1,52 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<vlayout width="200px" vflex="min">
+    <label value="Alapadatok"/>
+    <label value="Főbb jellemzők"/>
+    <panel border="normal+" title="CPU gyártó" minimizable="true" maximizable="true">
+        <panelchildren>
+            <vlayout children="@load(vm.cpuVendors)">
+                <template name="children">
+                    <checkbox label="@load(each.name)"
+                              onCheck="@command('pickingVendorHandler', checked=self.checked, picked=each)">
+                    </checkbox>
+                </template>
+            </vlayout>
+        </panelchildren>
+    </panel>
+
+    <panel border="normal+" title="CPU foglalat" minimizable="true" maximizable="true">
+        <panelchildren>
+            <vlayout children="@load(vm.cpuSockets)">
+                <template name="children">
+                    <checkbox label="@load(each.cpuSocketType)"
+                              onCheck="@command('pickingSocketHandler', checked=self.checked, picked=each)">
+                    </checkbox>
+                </template>
+            </vlayout>
+        </panelchildren>
+    </panel>
+    <panel border="normal+" title="CPU család" minimizable="true" maximizable="true">
+        <panelchildren>
+            <vlayout children="@load(vm.cpuFamilies)">
+                <template name="children">
+                    <checkbox label="@load(each.name)"
+                              onCheck="@command('pickingFamilyHandler', checked=self.checked, picked=each)">
+                    </checkbox>
+                </template>
+            </vlayout>
+        </panelchildren>
+    </panel>
+    <panel border="normal+" title="Vga típus" minimizable="true" maximizable="true">
+        <panelchildren>
+            <vlayout children="@load(vm.cpuVgaTypes)">
+                <template name="children">
+                    <checkbox label="@load(each.name)"
+                              onCheck="@command('pickingVgaHandler', checked=self.checked, picked=each)">
+                    </checkbox>
+                </template>
+            </vlayout>
+        </panelchildren>
+    </panel>
+
+
+</vlayout>

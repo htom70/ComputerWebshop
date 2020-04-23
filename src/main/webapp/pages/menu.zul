@@ -16,15 +16,16 @@
             </menupopup>
         </menu>
         <menu label="Irodatechnika"/>
-        <menu label="Kártyatechnokógia"/>
+        <menu label="Kártyatechnológia"/>
         <menu label="Szórakoztatás"/>
         <menu label="Kiegészítő/kábel"/>
         <menu label="Kommunikáció"/>
         <menu label="Háztartás"/>
     </menubar>
-    <borderlayout width="100%" height="500px">
-        <east width="20%">
-            <include src="@load(vm.inputParamPage)"/>
+
+    <borderlayout width="100%" height="1200px" >
+        <east width="20%" vflex="min">
+            <button label="Input proc" onClick="@command('loadProciInput')"/>
 
         </east>
         <west width="20%">
@@ -32,8 +33,7 @@
             <include src="@load(vm.queryPage)"/>
         </west>
         <center>
-            <label value="CENTER"/>
-<!--            <include src="@load(vm.showItemPage)"/>-->
+            <include src="@load(vm.productsPage)"/>
         </center>
     </borderlayout>
 </window>

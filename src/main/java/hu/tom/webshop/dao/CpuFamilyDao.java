@@ -19,4 +19,9 @@ public class CpuFamilyDao extends BaseDao<CpuFamily> {
         List<CpuFamily> cpuFamilies = query.getResultList();
         return cpuFamilies;
     }
+
+    public List<CpuFamily> findAllCpuFamilies() {
+        Query query = currentSession.createQuery("SELECT f FROM CpuFamily f");
+        return query.getResultList();
+    }
 }

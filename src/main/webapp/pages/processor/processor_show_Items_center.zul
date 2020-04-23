@@ -1,0 +1,25 @@
+<vlayout>
+    <listbox checkmark="true" width="100%" model="@load(vm.selectedProcessors)"
+             emptyMessage="No Procesor found in the result"
+             selectedItem="@bind(vm.selectedProcessor)">
+        <listhead>
+            <listheader align="center" width="14%" label="Vendor"/>
+            <listheader align="center" width="14%" label="Socket"/>
+            <listheader align="center" width="14%" label="Family"/>
+            <listheader align="center" width="14%" label="VgaTypa"/>
+            <listheader align="center" width="14%" label="Cores"/>
+            <listheader align="center" width="30%" label="Type"/>
+
+        </listhead>
+        <template name="model">
+            <listitem>
+                <listcell label="@init(each.cpuVendor.name)"></listcell>
+                <listcell label="@init(each.cpuSocket.cpuSocketType)"></listcell>
+                <listcell label="@init(each.cpuFamily.name)"></listcell>
+                <listcell label="@init(each.cpuVgaType.name)"></listcell>
+                <listcell label="@init(each.numberOfCores)"></listcell>
+                <listcell label="@init(each.type)"></listcell>
+            </listitem>
+        </template>
+    </listbox>
+</vlayout>

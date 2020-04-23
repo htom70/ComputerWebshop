@@ -1,5 +1,6 @@
 package hu.tom.webshop.dao;
 
+import hu.tom.webshop.domain.CpuFamily;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -47,4 +48,5 @@ public abstract class BaseDao<T> {
     public T findById(Long Id) {
         return currentSession.get(entityClass, Id);
     }
+
 }

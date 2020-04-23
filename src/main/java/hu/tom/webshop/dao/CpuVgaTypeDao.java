@@ -19,4 +19,9 @@ public class CpuVgaTypeDao extends BaseDao<CpuVgaType> {
         List<CpuVgaType> cpuVgaTypes = query.getResultList();
         return cpuVgaTypes;
     }
+
+    public List<CpuVgaType> findAllCpuVgaTypes() {
+        Query query = currentSession.createQuery("SELECT v FROM CpuVgaType v");
+        return query.getResultList();
+    }
 }

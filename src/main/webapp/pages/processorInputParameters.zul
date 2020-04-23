@@ -1,14 +1,14 @@
-<?link rel="stylesheet" type="text/css" href="/style.css"?>
-<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?link rel="stylesheet" type="text/css" href="/style2.css"?>
+
 <window viewModel="@id('vm') @init('hu.tom.webshop.viewmodel.InputCpuParametersFormViewModel')"
         title="Input CPU Parameters"
         id="inputCpuParameterFormId" mode="modal"
         minimizable="false" border="normal" position="center,center" closable="true"
         onClose="@command('cancel')"
-        action="show: slideDown;hide: slideUp">
-
-    <vlayout>
-        <grid width="1000px">
+        action="show: slideDown;hide: slideUp" sclass="row-title">
+    <caption sclass="caption" label="Új Proci"/>
+    <vbox align="stretch">
+        <grid width="1000px" span="true">
             <columns>
                 <column align="right" hflex="min"/>
                 <column hflex="1"/>
@@ -16,39 +16,49 @@
             </columns>
             <rows>
                 <row>
-                    <cell sclass="row-title">${c:l('cpuformLabelName')}</cell>
+                    <cell sclass="row-title">${labels.cpuformLabelName}</cell>
                     <cell>
-                        <textbox id="1" value="@save(vm.cpuType, before='saveProcessor')" width="80x"
+                        <textbox hflex="1" id="1" value="@save(vm.cpuType, before='saveProcessor')"
                                  constraint="no empty: Mandatory field"/>
                     </cell>
                     <cell/>
                 </row>
                 <row>
-                    <cell sclass="row-title">${c:l('cpuVendorformLabelName')}</cell>
-                    <cell>
-                        <radiogroup hflex="1" model="@load(vm.cpuVendors)" selectedItem="@save(vm.actualCpuVendor)" onCheck="@command('loadCpuSocketsUponVendor')">
-                            <template name="model">
-                                <radio label="@load(each.name)"/>
-                            </template>
-                        </radiogroup>
-                        <button iconSclass="z-icon-fw z-icon-plus-square"
-                        onClick="@command('activateNewCpuVendorTextBox')"/>
+                    <cell sclass="row-title">${labels.cpuVendorformLabelName}</cell>
+                    <cell valign="center">
+                        <hlayout>
+                            <radiogroup model="@load(vm.cpuVendors)"
+                                        selectedItem="@save(vm.actualCpuVendor)"
+                                        onCheck="@command('loadCpuSocketsUponVendor')">
+                                <template name="model">
+                                    <radio style="radio[label] color:red;" label="@load(each.name)"/>
+                                </template>
+                            </radiogroup>
+                            <button iconSclass="z-icon-fw z-icon-plus-square"
+                                    onClick="@command('activateNewCpuVendorTextBox')"/>
+                        </hlayout>
                     </cell>
                     <cell>
                         <hbox>
-                            <textbox disabled="@load(not vm.newVendorTextboxEnabled)" placeholder="új gyártó" hflex="1" value="@load(vm.cpuVendorName) @save(vm.cpuVendorName, before='saveNewCpuVendor')" constraint="no empty: Mandatory field"/>
-                            <button hflex="min"  iconSclass="z-icon-save" tooltiptext="Save" onClick="@command('saveNewCpuVendor')"/>
-                            <button hflex="min"  iconSclass="z-icon-undo" tooltiptext="Cancel" onClick="@command('deactivateNewCpuVendorTextBox')"/>
+                            <textbox disabled="@load(not vm.newVendorTextboxEnabled)" placeholder="új gyártó" hflex="1"
+                                     value="@load(vm.cpuVendorName) @save(vm.cpuVendorName, before='saveNewCpuVendor')"
+                                     constraint="no empty: Mandatory field"/>
+                            <button hflex="min" iconSclass="z-icon-save" tooltiptext="Save"
+                                    onClick="@command('saveNewCpuVendor')"/>
+                            <button hflex="min" iconSclass="z-icon-undo" tooltiptext="Cancel"
+                                    onClick="@command('deactivateNewCpuVendorTextBox')"/>
                         </hbox>
                     </cell>
                 </row>
                 <row>
-                    <cell sclass="row-title">${c:l('cpuSocketformLabelName')}</cell>
-                    <cell>
-                        <combobox disabled="@load(empty vm.cpuSockets)"  model="@load(vm.cpuSockets)" mold="rounded" width="200px"
-                                  selectedItem="@bind(vm.actualCpuSocket)" readonly="true" onSelect="@command('loadCpuFamiliesUponSocket')"
-                        onAfterRender="@command('noti')">
-                            <template name="model" >
+                    <cell sclass="row-title">${labels.cpuSocketformLabelName}</cell>
+                    <cell hflex="1">
+                        <combobox disabled="@load(empty vm.cpuSockets)" model="@load(vm.cpuSockets)" mold="rounded"
+                                  width="200px"
+                                  selectedItem="@bind(vm.actualCpuSocket)" readonly="true"
+                                  onSelect="@command('loadCpuFamiliesUponSocket')"
+                                  onAfterRender="@command('noti')">
+                            <template name="model">
                                 <comboitem label="@load(each.cpuSocketType)"/>
                             </template>
                         </combobox>
@@ -57,20 +67,26 @@
                     </cell>
                     <cell>
                         <hbox>
-                            <textbox disabled="@bind(not vm.newSocketTextboxEnabled)" placeholder="új socket" hflex="1" value="@load(vm.cpuSocketName) @save(vm.cpuSocketName, before='saveNewCpuSocket')" constraint="no empty: Mandatory field"/>
-                            <button hflex="min"  iconSclass="z-icon-save" tooltiptext="Save" onClick="@command('saveNewCpuSocket')"/>
-                            <button hflex="min"  iconSclass="z-icon-undo" tooltiptext="Cancel" onClick="@command('deactivateNewCpuFamilyTextBox')"/>
+                            <textbox disabled="@bind(not vm.newSocketTextboxEnabled)" placeholder="új socket" hflex="1"
+                                     value="@load(vm.cpuSocketName) @save(vm.cpuSocketName, before='saveNewCpuSocket')"
+                                     constraint="no empty: Mandatory field"/>
+                            <button hflex="min" iconSclass="z-icon-save" tooltiptext="Save"
+                                    onClick="@command('saveNewCpuSocket')"/>
+                            <button hflex="min" iconSclass="z-icon-undo" tooltiptext="Cancel"
+                                    onClick="@command('deactivateNewCpuFamilyTextBox')"/>
                         </hbox>
 
                     </cell>
                 </row>
                 <row>
-                    <cell sclass="row-title">${c:l('cpuFamilyformLabelName')}</cell>
+                    <cell sclass="row-title">${labels.cpuFamilyformLabelName}</cell>
                     <cell>
-                        <combobox disabled="@load(empty vm.cpuFamilies)" model="@load(vm.cpuFamilies)" mold="rounded" width="200px"
-                                  selectedItem="@bind(vm.actualCpuFamily)" readonly="true" onSelect="@command('loadCpuVgaTypesUponFamily')">
+                        <combobox disabled="@load(empty vm.cpuFamilies)" model="@load(vm.cpuFamilies)" mold="rounded"
+                                  width="200px"
+                                  selectedItem="@bind(vm.actualCpuFamily)" readonly="true"
+                                  onSelect="@command('loadCpuVgaTypesUponFamily')">
                             <template name="model">
-                                <comboitem label="@load(each.name)" />
+                                <comboitem label="@load(each.name)"/>
                             </template>
                         </combobox>
                         <button iconSclass="z-icon-fw z-icon-plus-square"
@@ -78,20 +94,25 @@
                     </cell>
                     <cell>
                         <hbox>
-                            <textbox disabled="@bind(not vm.newFamilyTextboxEnabled)" placeholder="új család" hflex="1" value="@load(vm.cpuFamilyName) @save(vm.cpuFamilyName, before='saveNewCpuFamily')" constraint="no empty: Mandatory field"/>
-                            <button hflex="min"  iconSclass="z-icon-save" tooltiptext="Save" onClick="@command('saveNewCpuFamily')"/>
-                            <button hflex="min"  iconSclass="z-icon-undo" tooltiptext="Cancel" onClick="@command('deactivateNewCpuFamilyTextBox')"/>
+                            <textbox disabled="@bind(not vm.newFamilyTextboxEnabled)" placeholder="új család" hflex="1"
+                                     value="@load(vm.cpuFamilyName) @save(vm.cpuFamilyName, before='saveNewCpuFamily')"
+                                     constraint="no empty: Mandatory field"/>
+                            <button hflex="min" iconSclass="z-icon-save" tooltiptext="Save"
+                                    onClick="@command('saveNewCpuFamily')"/>
+                            <button hflex="min" iconSclass="z-icon-undo" tooltiptext="Cancel"
+                                    onClick="@command('deactivateNewCpuFamilyTextBox')"/>
                         </hbox>
 
                     </cell>
                 </row>
                 <row>
-                    <cell sclass="row-title">${c:l('cpuVgaTypeformLabelName')}</cell>
+                    <cell sclass="row-title">${labels.cpuVgaTypeformLabelName}</cell>
                     <cell>
-                        <combobox disabled="@load(empty vm.cpuVgaTypes)" model="@load(vm.cpuVgaTypes)" mold="rounded" width="200px"
+                        <combobox disabled="@load(empty vm.cpuVgaTypes)" model="@load(vm.cpuVgaTypes)" mold="rounded"
+                                  width="200px"
                                   selectedItem="@bind(vm.actualCpuVgaType)" readonly="true">
                             <template name="model">
-                                <comboitem label="@load(each.name)" />
+                                <comboitem label="@load(each.name)"/>
                             </template>
                         </combobox>
                         <button iconSclass="z-icon-fw z-icon-plus-square"
@@ -99,21 +120,33 @@
                     </cell>
                     <cell>
                         <hbox>
-                            <textbox disabled="@bind(not vm.newVgaTypeTextboxEnabled)" placeholder="új vga" hflex="1" value="@load(vm.cpuVgaTypeName) @save(vm.cpuVgaTypeName, before='saveNewCpuVgaType')" constraint="no empty: Mandatory field"/>
-                            <button hflex="min"  iconSclass="z-icon-save" tooltiptext="Save" onClick="@command('saveNewCpuVgaType')"/>
-                            <button hflex="min"  iconSclass="z-icon-undo" tooltiptext="Cancel" onClick="@command('deactivateNewCpuVgaTypeTextBox')"/>
+                            <textbox disabled="@bind(not vm.newVgaTypeTextboxEnabled)" placeholder="új vga" hflex="1"
+                                     value="@load(vm.cpuVgaTypeName) @save(vm.cpuVgaTypeName, before='saveNewCpuVgaType')"
+                                     constraint="no empty: Mandatory field"/>
+                            <button hflex="min" iconSclass="z-icon-save" tooltiptext="Save"
+                                    onClick="@command('saveNewCpuVgaType')"/>
+                            <button hflex="min" iconSclass="z-icon-undo" tooltiptext="Cancel"
+                                    onClick="@command('deactivateNewCpuVgaTypeTextBox')"/>
                         </hbox>
 
                     </cell>
                 </row>
                 <row>
-                    <cell sclass="row-title">${c:l('coreNumberformLabelName')}</cell>
+                    <cell sclass="row-title">${labels.coreNumberformLabelName}</cell>
                     <cell>
-                        <spinner step="2" constraint="no empty,min 2 max 32: between 2 to 32" value="@bind(vm.numberOfCores)"/>
+                        <spinner step="2" constraint="no empty,min 2 max 32: between 2 to 32"
+                                 value="@bind(vm.numberOfCores)"/>
                     </cell>
                 </row>
             </rows>
         </grid>
+        <radiogroup model="@load(vm.cpuVendors)" selectedItem="@save(vm.actualCpuVendor)"
+                    onCheck="@command('loadCpuSocketsUponVendor')">
+            <template name="model">
+                <radio label="@load(each.name)"/>
+            </template>
+        </radiogroup>
         <button label="save" iconSclass="z-icon-save" onClick="@command('saveProcessor')"/>
-    </vlayout>
+        <button label="cancel" iconSclass="z-icon-cancel" onClick="@command('cancel')"/>
+    </vbox>
 </window>

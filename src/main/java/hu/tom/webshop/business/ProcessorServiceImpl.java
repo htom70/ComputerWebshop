@@ -1,7 +1,7 @@
 package hu.tom.webshop.business;
 
 import hu.tom.webshop.dao.ProcessorDao;
-import hu.tom.webshop.domain.Processor;
+import hu.tom.webshop.domain.*;
 
 import java.util.List;
 
@@ -43,5 +43,13 @@ public class ProcessorServiceImpl implements BaseService<Processor> {
 
     public int getSize() {
         return Math.toIntExact(processorDao.getSize());
+    }
+
+    public List<Processor> findProcessorsByCPuParameters(List<CpuSocket> cpuSockets) {
+        return processorDao.findProcessorsByCPuSockets(cpuSockets);
+    }
+
+    public List<Processor> findAllProcessorByCpuParameters(List<CpuVendor> vendors, List<CpuSocket> sockets, List<CpuFamily> families, List<CpuVgaType> vgaTypes) {
+        return processorDao.findAllProcessorByCpuParameters(vendors, sockets, families, vgaTypes);
     }
 }

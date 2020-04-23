@@ -38,10 +38,10 @@
 	font-size: medium;
 }
 
-.row-title .z-label{
-	font-size: small;
+.row-title {
+	font-size: 0.5em;
 	font-weight: bold;
-	color:#636363;
+	color: #f50505;
 }
 
 .fn-caption .z-caption-l{
@@ -65,7 +65,8 @@
 }
 
 .todo-box {
-	padding-right:4px;
+	padding-right:50px;
+	padding-left: 50px;
 }
 
 .first-menu-line {
@@ -92,6 +93,18 @@
 
 .submenu-item-focused {
 	color: green;
+}
+
+.caption {
+	font-weight: bold;
+	font-size: medium;
+	color: #636363;
+}
+
+.radio4.z-radio .z-radio-cnt
+{
+    color : green;
+    vertical-align: super;
 }
 
 

@@ -378,6 +378,12 @@ public class InputCpuParametersFormViewModel {
         BindUtils.postNotifyChange(null,null,this,"cpuVgaTypes");
     }
 
+    @Command
+    public void cancel() {
+        BindUtils.postGlobalCommand(null, null, "refresh", null);
+    }
+
+
 
     @Command
     public void noti() {
